@@ -1,0 +1,11 @@
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\bin\Release\net9.0\EndpointMonitor.Shared.deps.json
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\bin\Release\net9.0\EndpointMonitor.Shared.dll
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\bin\Release\net9.0\EndpointMonitor.Shared.pdb
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.AssemblyInfoInputs.cache
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.AssemblyInfo.cs
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.csproj.CoreCompileInputs.cache
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.dll
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\refint\EndpointMonitor.Shared.dll
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\EndpointMonitor.Shared.pdb
+C:\Apps\EndpointMonitor\EndpointMonitor.Shared\obj\Release\net9.0\ref\EndpointMonitor.Shared.dll

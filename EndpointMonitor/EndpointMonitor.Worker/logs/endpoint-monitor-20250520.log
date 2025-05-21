@@ -1,0 +1,104 @@
+2025-05-20 13:49:33.867 +00:00 [INF] Starting EndpointMonitor
+2025-05-20 13:49:34.160 +00:00 [INF] EndpointMonitor service started at: "2025-05-20T13:49:34.1498163+00:00"
+2025-05-20 13:49:34.164 +00:00 [INF] Monitoring 4 endpoints:
+2025-05-20 13:49:34.164 +00:00 [INF]   - Google HTTP: Http test for www.google.com:443 (Schedule: */5 * * * *)
+2025-05-20 13:49:34.165 +00:00 [INF]   - Google HTTPS Certificate: Certificate test for www.google.com:443 (Schedule: 0 */6 * * *)
+2025-05-20 13:49:34.165 +00:00 [INF]   - Local SQL Server: Port test for localhost:1433 (Schedule: */15 * * * *)
+2025-05-20 13:49:34.165 +00:00 [INF]   - Example API: Http test for jsonplaceholder.typicode.com:443 (Schedule: */10 * * * *)
+2025-05-20 13:49:34.166 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:49:34.173 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-20 13:49:34.178 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-20 13:49:34.201 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-20 13:49:34.205 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-20 13:49:34.209 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-20 13:49:34.212 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-20 13:49:34.218 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-20 13:49:34.218 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-20 13:49:34.225 +00:00 [ERR] Unexpected error testing https://jsonplaceholder.typicode.com/posts/1. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_Timeout(TimeSpan value)
+   at EndpointMonitor.Worker.EndpointTests.HttpChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/HttpChecker.cs:line 48
+2025-05-20 13:49:34.244 +00:00 [INF] Running 4 scheduled tests
+2025-05-20 13:49:34.764 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 586ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-20 13:49:34.765 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 316ms - Certificate for www.google.com is valid for 54 days (expires on 2025-07-14)
+2025-05-20 13:49:34.765 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 43ms - Successfully connected to localhost:1433
+2025-05-20 13:49:34.767 +00:00 [WRN] Test Http for Example API (jsonplaceholder.typicode.com:443): FAILED in 23ms - Unexpected error testing https://jsonplaceholder.typicode.com/posts/1. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+2025-05-20 13:50:04.767 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:50:04.767 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-20 13:50:04.767 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-20 13:50:04.767 +00:00 [ERR] Unexpected error testing https://www.google.com/. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_Timeout(TimeSpan value)
+   at EndpointMonitor.Worker.EndpointTests.HttpChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/HttpChecker.cs:line 48
+2025-05-20 13:50:04.767 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-20 13:50:04.767 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-20 13:50:04.768 +00:00 [ERR] Unexpected error testing https://jsonplaceholder.typicode.com/posts/1. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+System.InvalidOperationException: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+   at System.Net.Http.HttpClient.CheckDisposedOrStarted()
+   at System.Net.Http.HttpClient.set_Timeout(TimeSpan value)
+   at EndpointMonitor.Worker.EndpointTests.HttpChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/HttpChecker.cs:line 48
+2025-05-20 13:50:04.770 +00:00 [INF] Running 2 scheduled tests
+2025-05-20 13:50:04.770 +00:00 [WRN] Test Http for Google HTTP (www.google.com:443): FAILED in 0ms - Unexpected error testing https://www.google.com/. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+2025-05-20 13:50:04.771 +00:00 [WRN] Test Http for Example API (jsonplaceholder.typicode.com:443): FAILED in 3ms - Unexpected error testing https://jsonplaceholder.typicode.com/posts/1. Error: This instance has already started one or more requests. Properties can only be modified before sending the first request.
+2025-05-20 13:50:34.771 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:51:04.773 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:51:34.773 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:52:04.774 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:52:10.139 +00:00 [FTL] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 51
+2025-05-20 13:52:10.140 +00:00 [INF] EndpointMonitor service stopping at: "2025-05-20T13:52:10.1407981+00:00"
+2025-05-20 13:52:11.605 +00:00 [INF] Starting EndpointMonitor
+2025-05-20 13:52:11.876 +00:00 [INF] EndpointMonitor service started at: "2025-05-20T13:52:11.8669076+00:00"
+2025-05-20 13:52:11.880 +00:00 [INF] Monitoring 4 endpoints:
+2025-05-20 13:52:11.882 +00:00 [INF]   - Google HTTP: Http test for www.google.com:443 (Schedule: */5 * * * *)
+2025-05-20 13:52:11.882 +00:00 [INF]   - Google HTTPS Certificate: Certificate test for www.google.com:443 (Schedule: 0 */6 * * *)
+2025-05-20 13:52:11.882 +00:00 [INF]   - Local SQL Server: Port test for localhost:1433 (Schedule: */15 * * * *)
+2025-05-20 13:52:11.882 +00:00 [INF]   - Example API: Http test for jsonplaceholder.typicode.com:443 (Schedule: */10 * * * *)
+2025-05-20 13:52:11.884 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:52:11.890 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-20 13:52:11.894 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-20 13:52:11.935 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-20 13:52:11.937 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-20 13:52:11.943 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-20 13:52:11.945 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-20 13:52:11.947 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-20 13:52:11.947 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-20 13:52:11.947 +00:00 [INF] Running 4 scheduled tests
+2025-05-20 13:52:12.690 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 627ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-20 13:52:12.690 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 750ms - Certificate for www.google.com is valid for 54 days (expires on 2025-07-14)
+2025-05-20 13:52:12.694 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 37ms - Successfully connected to localhost:1433
+2025-05-20 13:52:12.694 +00:00 [INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 374ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+2025-05-20 13:52:42.695 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:53:12.696 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:53:42.697 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:54:12.697 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:54:16.343 +00:00 [FTL] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 51
+2025-05-20 13:54:16.363 +00:00 [INF] EndpointMonitor service stopping at: "2025-05-20T13:54:16.3635125+00:00"
+ * *)
+2025-05-20 13:52:13.078 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:52:13.084 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-20 13:52:13.087 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-20 13:52:13.127 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-20 13:52:13.131 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-20 13:52:13.133 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-20 13:52:13.135 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-20 13:52:13.136 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-20 13:52:13.136 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-20 13:52:13.138 +00:00 [INF] Running 4 scheduled tests
+2025-05-20 13:52:13.822 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 734ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-20 13:52:13.822 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 272ms - Certificate for www.google.com is valid for 54 days (expires on 2025-07-14)
+2025-05-20 13:52:13.825 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 21ms - Successfully connected to localhost:1433
+2025-05-20 13:52:13.825 +00:00 [INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 476ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+2025-05-20 13:52:43.824 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:53:13.825 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:53:43.822 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:54:13.822 +00:00 [INF] Checking for scheduled tests to run
+2025-05-20 13:54:16.343 +00:00 [FTL] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 51
+2025-05-20 13:54:16.363 +00:00 [INF] EndpointMonitor service stopping at: "2025-05-20T13:54:16.3635591+00:00"

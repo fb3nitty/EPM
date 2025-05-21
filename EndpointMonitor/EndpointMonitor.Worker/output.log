@@ -1,0 +1,29 @@
+[13:52:11 INF] Starting EndpointMonitor
+[13:52:11 INF] EndpointMonitor service started at: 05/20/2025 13:52:11 +00:00
+[13:52:11 INF] Monitoring 4 endpoints:
+[13:52:11 INF]   - Google HTTP: Http test for www.google.com:443 (Schedule: */5 * * * *)
+[13:52:11 INF]   - Google HTTPS Certificate: Certificate test for www.google.com:443 (Schedule: 0 */6 * * *)
+[13:52:11 INF]   - Local SQL Server: Port test for localhost:1433 (Schedule: */15 * * * *)
+[13:52:11 INF]   - Example API: Http test for jsonplaceholder.typicode.com:443 (Schedule: */10 * * * *)
+[13:52:11 INF] Checking for scheduled tests to run
+[13:52:11 INF] Scheduling test for endpoint Google HTTP
+[13:52:11 INF] Testing HTTP connectivity to https://www.google.com/
+[13:52:11 INF] Scheduling test for endpoint Google HTTPS Certificate
+[13:52:11 INF] Testing SSL certificate for www.google.com:443
+[13:52:11 INF] Scheduling test for endpoint Local SQL Server
+[13:52:11 INF] Testing port connectivity to localhost:1433
+[13:52:11 INF] Scheduling test for endpoint Example API
+[13:52:11 INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+[13:52:11 INF] Running 4 scheduled tests
+[13:52:12 INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 627ms - HTTP request to https://www.google.com/ succeeded with status code OK
+[13:52:12 INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 750ms - Certificate for www.google.com is valid for 54 days (expires on 2025-07-14)
+[13:52:12 INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 37ms - Successfully connected to localhost:1433
+[13:52:12 INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 374ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+[13:52:42 INF] Checking for scheduled tests to run
+[13:53:12 INF] Checking for scheduled tests to run
+[13:53:42 INF] Checking for scheduled tests to run
+[13:54:12 INF] Checking for scheduled tests to run
+[13:54:16 FTL] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 51
+[13:54:16 INF] EndpointMonitor service stopping at: 05/20/2025 13:54:16 +00:00
