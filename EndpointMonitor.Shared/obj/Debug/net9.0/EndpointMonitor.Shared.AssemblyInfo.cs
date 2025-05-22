@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EndpointMonitor.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65969b4b7662a782a23ec09921998e0a48d98c96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+234f5dceb0a19d226e31d8295d20c95a6c5280be")]
 [assembly: System.Reflection.AssemblyProductAttribute("EndpointMonitor.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EndpointMonitor.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

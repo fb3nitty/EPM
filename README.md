@@ -78,7 +78,7 @@ dotnet --version
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/EndpointMonitor.git
+git clone https://github.com/fb3nitty/EPM/EndpointMonitor.git
 cd EndpointMonitor
 ```
 
