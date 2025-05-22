@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj": {}
+    "C:\\Apps\\EPM\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj": {}
   },
   "projects": {
-    "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj": {
+    "C:\\Apps\\EPM\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj",
+        "projectUniqueName": "C:\\Apps\\EPM\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj",
         "projectName": "EndpointMonitor.Service",
-        "projectPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj",
+        "projectPath": "C:\\Apps\\EPM\\EndpointMonitor.Service\\EndpointMonitor.Service.csproj",
         "packagesPath": "C:\\Users\\Frank\\.nuget\\packages\\",
-        "outputPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Service\\obj\\",
+        "outputPath": "C:\\Apps\\EPM\\EndpointMonitor.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Frank\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj": {
-                "projectPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj"
+              "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj": {
+                "projectPath": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj": {
+    "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
+        "projectUniqueName": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
         "projectName": "EndpointMonitor.Shared",
-        "projectPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
+        "projectPath": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
         "packagesPath": "C:\\Users\\Frank\\.nuget\\packages\\",
-        "outputPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\obj\\",
+        "outputPath": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Frank\\AppData\\Roaming\\NuGet\\NuGet.Config"

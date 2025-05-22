@@ -1,0 +1,209 @@
+2025-05-22 16:01:40.914 +00:00 [INF] EndpointMonitor Worker service starting
+2025-05-22 16:01:40.972 +00:00 [INF] EndpointMonitor Worker service starting at: "2025-05-22T16:01:40.9675215+00:00"
+2025-05-22 16:01:40.977 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:40.982 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-22 16:01:40.986 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-22 16:01:41.037 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-22 16:01:41.040 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-22 16:01:41.046 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-22 16:01:41.049 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-22 16:01:41.053 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-22 16:01:41.059 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-22 16:01:41.065 +00:00 [INF] Scheduling test for endpoint SQL Server Database Check
+2025-05-22 16:01:41.107 +00:00 [INF] Testing SQL Server connectivity to localhost:1433
+2025-05-22 16:01:41.240 +00:00 [INF] Scheduling test for endpoint Azure Redis Cache
+2025-05-22 16:01:41.268 +00:00 [INF] Testing Redis connectivity to your-azure-redis.redis.cache.windows.net:6380
+2025-05-22 16:01:41.361 +00:00 [INF] Scheduling test for endpoint Local Redis Server
+2025-05-22 16:01:41.362 +00:00 [INF] Testing Redis connectivity to localhost:6379
+2025-05-22 16:01:41.368 +00:00 [INF] Running 7 scheduled tests
+2025-05-22 16:01:43.379 +00:00 [WRN] Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:01:45.828 +00:00 [ERR] SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at EndpointMonitor.Worker.EndpointTests.SqlServerChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/SqlServerChecker.cs:line 60
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+2025-05-22 16:01:47.417 +00:00 [WRN] Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:01:47.418 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 370ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-22 16:01:47.429 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 245ms - Certificate for www.google.com is valid for 52 days (expires on 2025-07-14)
+2025-05-22 16:01:47.434 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 12ms - Successfully connected to localhost:1433
+2025-05-22 16:01:47.439 +00:00 [INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 257ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+2025-05-22 16:01:47.444 +00:00 [WRN] Test SqlServer for SQL Server Database Check (localhost:1433): FAILED in 4,737ms - SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+2025-05-22 16:01:47.450 +00:00 [WRN] Test Redis for Azure Redis Cache (your-azure-redis.redis.cache.windows.net:6380): FAILED in 6,149ms - Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:01:47.455 +00:00 [WRN] Test Redis for Local Redis Server (localhost:6379): FAILED in 2,014ms - Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:01:48.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:49.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:50.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:51.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:52.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:53.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:54.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:55.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:56.458 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:57.458 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:58.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:01:59.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:00.459 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:01.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:02.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:03.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:04.460 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:05.461 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:06.461 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:07.461 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:08.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:09.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:10.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:11.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:12.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:13.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:14.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:15.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:16.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:17.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:18.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:19.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:20.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:21.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:22.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:23.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:24.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:25.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:26.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:27.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:28.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:29.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:30.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:31.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:32.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:33.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:34.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:35.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:36.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:37.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:38.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:39.464 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:40.463 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:41.462 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:42.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:43.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:44.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:45.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:46.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:47.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:48.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:49.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:50.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:51.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:52.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:53.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:54.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:55.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:56.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:57.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:58.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:02:59.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:00.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:01.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:02.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:03.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:04.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:05.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:06.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:07.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:08.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:09.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:10.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:11.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:12.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:13.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:14.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:15.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:16.465 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:17.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:18.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:19.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:20.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:21.468 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:22.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:23.467 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:24.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:25.466 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:26.469 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:27.472 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:28.471 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:29.471 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:30.470 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:31.472 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:32.472 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:33.471 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:34.470 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:35.470 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:36.472 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:37.471 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:38.471 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:38.986 +00:00 [INF] EndpointMonitor Worker service stopping
+2025-05-22 16:03:38.986 +00:00 [ERR] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 39
+2025-05-22 16:03:45.216 +00:00 [INF] EndpointMonitor Worker service starting
+2025-05-22 16:03:45.257 +00:00 [INF] EndpointMonitor Worker service starting at: "2025-05-22T16:03:45.2525171+00:00"
+2025-05-22 16:03:45.262 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:03:45.265 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-22 16:03:45.270 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-22 16:03:45.309 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-22 16:03:45.312 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-22 16:03:45.316 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-22 16:03:45.323 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-22 16:03:45.327 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-22 16:03:45.334 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-22 16:03:45.338 +00:00 [INF] Scheduling test for endpoint SQL Server Database Check
+2025-05-22 16:03:45.348 +00:00 [INF] Testing SQL Server connectivity to localhost:1433
+2025-05-22 16:03:45.424 +00:00 [INF] Scheduling test for endpoint Azure Redis Cache
+2025-05-22 16:03:45.431 +00:00 [INF] Testing Redis connectivity to your-azure-redis.redis.cache.windows.net:6380
+2025-05-22 16:03:45.511 +00:00 [INF] Scheduling test for endpoint Local Redis Server
+2025-05-22 16:03:45.511 +00:00 [INF] Testing Redis connectivity to localhost:6379
+2025-05-22 16:03:45.518 +00:00 [INF] Running 7 scheduled tests
+2025-05-22 16:03:45.576 +00:00 [WRN] Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:03:49.992 +00:00 [ERR] SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at EndpointMonitor.Worker.EndpointTests.SqlServerChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/SqlServerChecker.cs:line 60
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+2025-05-22 16:03:51.238 +00:00 [INF] EndpointMonitor Worker service stopping
+2025-05-22 16:03:51.574 +00:00 [WRN] Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:03:51.575 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 414ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-22 16:03:51.586 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 302ms - Certificate for www.google.com is valid for 52 days (expires on 2025-07-14)
+2025-05-22 16:03:51.591 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 13ms - Successfully connected to localhost:1433
+2025-05-22 16:03:51.597 +00:00 [INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 316ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+2025-05-22 16:03:51.602 +00:00 [WRN] Test SqlServer for SQL Server Database Check (localhost:1433): FAILED in 4,659ms - SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+2025-05-22 16:03:51.605 +00:00 [WRN] Test Redis for Azure Redis Cache (your-azure-redis.redis.cache.windows.net:6380): FAILED in 6,143ms - Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:03:51.608 +00:00 [WRN] Test Redis for Local Redis Server (localhost:6379): FAILED in 61ms - Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:03:51.612 +00:00 [ERR] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 39

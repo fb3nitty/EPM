@@ -12,6 +12,8 @@ EndpointMonitor is designed to provide reliable monitoring of network endpoints 
   - **Port Check**: Verifies if a TCP port is open and accessible
   - **HTTP Check**: Tests HTTP/HTTPS endpoints with status code and content validation
   - **Certificate Check**: Monitors SSL certificate expiration dates
+  - **SQL Server Check**: Connects to a SQL Server instance and lists available databases
+  - **Redis Check**: Connects to Redis instances (including Azure Redis) and verifies connectivity
 
 - **Flexible Configuration**:
   - JSON-based configuration via appsettings.json
@@ -120,7 +122,7 @@ The application is configured through the `appsettings.json` file. Here's an exa
       {
         "Name": "File",
         "Args": {
-          "path": "C:/Temp/logs/endpoint-monitor-.log",
+          "path": "logs/endpoint-monitor-.log",
           "rollingInterval": "Day",
           "retainedFileCountLimit": 7,
           "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
@@ -172,6 +174,38 @@ The application is configured through the `appsettings.json` file. Here's an exa
         "ExpectedContent": "\"userId\"",
         "Timeout": 10000,
         "Schedule": "*/10 * * * *"
+      },
+      {
+        "Name": "SQL Server Database Check",
+        "Host": "localhost",
+        "Port": 1433,
+        "TestType": "SqlServer",
+        "Timeout": 5000,
+        "SqlServerDatabase": "master",
+        "SqlServerUsername": "sa",
+        "SqlServerPassword": "YourStrongPassword123",
+        "Schedule": "*/15 * * * *"
+      },
+      {
+        "Name": "Azure Redis Cache",
+        "Host": "your-azure-redis.redis.cache.windows.net",
+        "Port": 6380,
+        "TestType": "Redis",
+        "UseSsl": true,
+        "Timeout": 5000,
+        "RedisPassword": "YourAzureRedisAccessKey",
+        "Schedule": "*/10 * * * *"
+      },
+      {
+        "Name": "Local Redis Server",
+        "Host": "localhost",
+        "Port": 6379,
+        "TestType": "Redis",
+        "UseSsl": false,
+        "Timeout": 2000,
+        "RedisUsername": "default",
+        "RedisPassword": "YourLocalRedisPassword",
+        "Schedule": "*/5 * * * *"
       }
     ]
   }
@@ -187,7 +221,7 @@ The application is configured through the `appsettings.json` file. Here's an exa
 | `Name` | Friendly name for the endpoint | Required |
 | `Host` | Hostname or IP address | Required |
 | `Port` | TCP port number | Required |
-| `TestType` | Type of test: "Port", "Http", or "Certificate" | Required |
+| `TestType` | Type of test: "Port", "Http", "Certificate", "SqlServer", or "Redis" | Required |
 | `Timeout` | Timeout in milliseconds | 5000 |
 | `Schedule` | Cron expression for test schedule | "*/5 * * * *" (every 5 minutes) |
 
@@ -206,6 +240,21 @@ The application is configured through the `appsettings.json` file. Here's an exa
 | Property | Description | Default |
 |----------|-------------|---------|
 | `MinCertificateDaysValid` | Minimum days before certificate expiration | 30 |
+
+#### SQL Server-Specific Properties
+
+| Property | Description | Default |
+|----------|-------------|---------|
+| `SqlServerDatabase` | Database to connect to | "master" |
+| `SqlServerUsername` | SQL Server authentication username | null (uses Windows Authentication if not specified) |
+| `SqlServerPassword` | SQL Server authentication password | null |
+
+#### Redis-Specific Properties
+
+| Property | Description | Default |
+|----------|-------------|---------|
+| `RedisUsername` | Redis authentication username | null (not used for Redis versions before 6.0 or when ACL is not enabled) |
+| `RedisPassword` | Redis authentication password | null |
 
 #### Scheduler Configuration
 
@@ -236,11 +285,10 @@ The application will start monitoring the configured endpoints according to thei
 
 ```powershell
 # Run as Administrator
-$Path = get-Location
 $serviceName = "EndpointMonitor"
 $displayName = "Endpoint Monitoring Service"
 $description = "Monitors network endpoints for availability and performance"
-$exePath = Join-Path $Path "EndpointMonitor.Worker.exe"
+$exePath = Join-Path $PSScriptRoot "EndpointMonitor.Worker.exe"
 
 # Stop and remove the service if it exists
 if (Get-Service $serviceName -ErrorAction SilentlyContinue) {
@@ -251,11 +299,27 @@ if (Get-Service $serviceName -ErrorAction SilentlyContinue) {
 
 # Create the service
 New-Service -Name $serviceName `
-    -BinaryPathName "$exePath" `
+    -BinaryPathName "$exePath --windows-service" `
     -DisplayName $displayName `
     -Description $description `
     -StartupType Automatic
 Write-Host "Created service: $serviceName"
+
+# Create log directory and set permissions
+$logDir = Join-Path $env:ProgramData "EndpointMonitor\logs"
+if (-not (Test-Path $logDir)) {
+    New-Item -Path $logDir -ItemType Directory -Force | Out-Null
+    Write-Host "Created log directory: $logDir"
+}
+
+# Grant SYSTEM and Administrators full control to the log directory
+$acl = Get-Acl $logDir
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("SYSTEM", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($rule)
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrators", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
+$acl.SetAccessRule($rule)
+Set-Acl $logDir $acl
+Write-Host "Set permissions on log directory"
 
 # Start the service
 Start-Service $serviceName
@@ -281,6 +345,20 @@ Stop-Service EndpointMonitor
 Get-Service EndpointMonitor
 ```
 
+#### Alternative Installation Using sc.exe
+
+You can also install the service directly using the Windows `sc.exe` command:
+
+```cmd
+sc.exe create EndpointMonitor binPath= "\"C:\Path\To\EndpointMonitor.Worker.exe\" --windows-service" DisplayName= "Endpoint Monitoring Service" start= auto
+sc.exe description EndpointMonitor "Monitors network endpoints for availability and performance"
+```
+
+> **Important Notes:**
+> 1. Always use the `.exe` file, not the `.dll` file when installing as a Windows service
+> 2. Logs are stored in `%PROGRAMDATA%\EndpointMonitor\logs\` when running as a service
+> 3. Ensure the service account (typically SYSTEM) has write permissions to the log directory
+
 #### Uninstalling the Service
 
 ```powershell
@@ -297,20 +375,31 @@ sc.exe delete EndpointMonitor
    - Check the Windows Event Viewer for error details
    - Verify the application configuration in appsettings.json
    - Ensure the service account has necessary permissions
+   - Check the startup error log at `%PROGRAMDATA%\EndpointMonitor\startup-error.log`
 
-2. **Endpoints always show as failed**
+2. **Logging not working when running as a service**
+   - Verify that the `%PROGRAMDATA%\EndpointMonitor\logs` directory exists
+   - Ensure the service account (typically SYSTEM) has write permissions to this directory
+   - Check if any antivirus or security software is blocking file writes
+   - Review the Windows Event Viewer for any permission-related errors
+
+3. **Endpoints always show as failed**
    - Verify network connectivity to the target hosts
    - Check firewall settings that might block connections
    - Ensure the correct ports are specified in the configuration
 
-3. **Scheduling issues**
+4. **Scheduling issues**
    - Verify that cron expressions are correctly formatted
    - Check system time and timezone settings
    - Ensure the service is running continuously
 
 ### Logging
 
-The application logs to both the console and log files in the `logs` directory. Log files are named with the pattern `endpoint-monitor-YYYYMMDD.log` and are rotated daily. Make sure log path exist and the service has access. Should update current log path to not use c drive.
+When running as a console application, the application logs to both the console and log files in the `logs` directory relative to the application.
+
+When running as a Windows service, logs are written to `%PROGRAMDATA%\EndpointMonitor\logs\`. This is typically `C:\ProgramData\EndpointMonitor\logs\` on most Windows systems.
+
+Log files are named with the pattern `endpoint-monitor-YYYYMMDD.log` and are rotated daily.
 
 To increase log verbosity, modify the Serilog configuration in appsettings.json:
 

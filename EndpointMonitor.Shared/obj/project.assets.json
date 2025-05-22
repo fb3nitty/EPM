@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
+      "projectUniqueName": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
       "projectName": "EndpointMonitor.Shared",
-      "projectPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
+      "projectPath": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\EndpointMonitor.Shared.csproj",
       "packagesPath": "C:\\Users\\Frank\\.nuget\\packages\\",
-      "outputPath": "C:\\Apps\\EndPointMonitor\\EndpointMonitor.Shared\\obj\\",
+      "outputPath": "C:\\Apps\\EPM\\EndpointMonitor.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Frank\\AppData\\Roaming\\NuGet\\NuGet.Config"

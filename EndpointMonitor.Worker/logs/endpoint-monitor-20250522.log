@@ -1,0 +1,49 @@
+2025-05-22 16:04:48.557 +00:00 [INF] EndpointMonitor Worker service starting
+2025-05-22 16:04:48.619 +00:00 [INF] EndpointMonitor Worker service starting at: "2025-05-22T16:04:48.6125175+00:00"
+2025-05-22 16:04:48.626 +00:00 [INF] Checking for scheduled tests to run
+2025-05-22 16:04:48.633 +00:00 [INF] Scheduling test for endpoint Google HTTP
+2025-05-22 16:04:48.640 +00:00 [INF] Testing HTTP connectivity to https://www.google.com/
+2025-05-22 16:04:48.683 +00:00 [INF] Scheduling test for endpoint Google HTTPS Certificate
+2025-05-22 16:04:48.686 +00:00 [INF] Testing SSL certificate for www.google.com:443
+2025-05-22 16:04:48.694 +00:00 [INF] Scheduling test for endpoint Local SQL Server
+2025-05-22 16:04:48.697 +00:00 [INF] Testing port connectivity to localhost:1433
+2025-05-22 16:04:48.702 +00:00 [INF] Scheduling test for endpoint Example API
+2025-05-22 16:04:48.708 +00:00 [INF] Testing HTTP connectivity to https://jsonplaceholder.typicode.com/posts/1
+2025-05-22 16:04:48.715 +00:00 [INF] Scheduling test for endpoint SQL Server Database Check
+2025-05-22 16:04:48.726 +00:00 [INF] Testing SQL Server connectivity to localhost:1433
+2025-05-22 16:04:48.828 +00:00 [INF] Scheduling test for endpoint Azure Redis Cache
+2025-05-22 16:04:48.836 +00:00 [INF] Testing Redis connectivity to your-azure-redis.redis.cache.windows.net:6380
+2025-05-22 16:04:48.932 +00:00 [INF] Scheduling test for endpoint Local Redis Server
+2025-05-22 16:04:48.932 +00:00 [INF] Testing Redis connectivity to localhost:6379
+2025-05-22 16:04:48.942 +00:00 [INF] Running 7 scheduled tests
+2025-05-22 16:04:48.967 +00:00 [WRN] Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:04:50.145 +00:00 [INF] EndpointMonitor Worker service stopping
+2025-05-22 16:04:53.395 +00:00 [ERR] SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at EndpointMonitor.Worker.EndpointTests.SqlServerChecker.TestEndpointAsync(EndpointConfig endpoint) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/EndpointTests/SqlServerChecker.cs:line 60
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+2025-05-22 16:04:54.984 +00:00 [WRN] Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:04:54.985 +00:00 [INF] Test Http for Google HTTP (www.google.com:443): SUCCESS in 399ms - HTTP request to https://www.google.com/ succeeded with status code OK
+2025-05-22 16:04:54.996 +00:00 [INF] Test Certificate for Google HTTPS Certificate (www.google.com:443): SUCCESS in 273ms - Certificate for www.google.com is valid for 52 days (expires on 2025-07-14)
+2025-05-22 16:04:55.002 +00:00 [INF] Test Port for Local SQL Server (localhost:1433): SUCCESS in 12ms - Successfully connected to localhost:1433
+2025-05-22 16:04:55.008 +00:00 [INF] Test Http for Example API (jsonplaceholder.typicode.com:443): SUCCESS in 286ms - HTTP request to https://jsonplaceholder.typicode.com/posts/1 returned expected status code OK
+2025-05-22 16:04:55.013 +00:00 [WRN] Test SqlServer for SQL Server Database Check (localhost:1433): FAILED in 4,685ms - SQL Server connection to localhost:1433 failed. Error: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 40 - Could not open a connection to SQL Server)
+2025-05-22 16:04:55.019 +00:00 [WRN] Test Redis for Azure Redis Cache (your-azure-redis.redis.cache.windows.net:6380): FAILED in 6,148ms - Failed to connect to Redis at your-azure-redis.redis.cache.windows.net:6380. Connection not established.
+2025-05-22 16:04:55.024 +00:00 [WRN] Test Redis for Local Redis Server (localhost:6379): FAILED in 28ms - Failed to connect to Redis at localhost:6379. Connection not established.
+2025-05-22 16:04:55.030 +00:00 [ERR] Fatal error in worker service
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at EndpointMonitor.Worker.Worker.ExecuteAsync(CancellationToken stoppingToken) in /home/ubuntu/EndpointMonitor/EndpointMonitor.Worker/Worker.cs:line 39

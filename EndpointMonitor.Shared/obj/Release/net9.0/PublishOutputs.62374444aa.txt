@@ -1,0 +1,3 @@
+C:\Apps\EPM\publish\EndpointMonitor.Shared.dll
+C:\Apps\EPM\publish\EndpointMonitor.Shared.deps.json
+C:\Apps\EPM\publish\EndpointMonitor.Shared.pdb
